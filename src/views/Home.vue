@@ -1,69 +1,55 @@
 <template>
-<div>
-  <a-space>
-    <a-button type="primary" @click="visible = true">
-      解析JSON
-    </a-button>
+  <div>
+    <a-space>
+      <a-button type="primary" @click="visible = true">
+        解析JSON
+      </a-button>
 
-    <a-button :data-clipboard-text="copyText" class="jumpUrl" @click="copy('jumpUrl')" type="text">
-      复制代码
-    </a-button>
-  </a-space>
+      <a-button
+        v-if="myArray"
+        :data-clipboard-text="copyText"
+        class="jumpUrl"
+        @click="copy('jumpUrl')"
+        type="text"
+      >
+        复制代码
+      </a-button>
+    </a-space>
+    <div class="warp" v-if="myArray">
+      <a-card
+        class="card"
+        size="small"
+        :title="element.label"
+        v-for="(element, index) in TableList"
+        :key="index"
+      >
+      </a-card>
+    </div>
 
-  <draggable v-model="myArray.list" @change="datadragEnd" class="warp" v-if="myArray" animation="1000">
-    <a-card class="card" size="small" :title="element.label" v-for="(element, index) in myArray.list" :key="index">
-      <a-form-model layout="horizontal" v-bind="{
-            labelCol: { span: 4 },
-            wrapperCol: { span: 14 },
-          }">
-        <a-form-model-item label="列名" v-if="Object.keys(myArray.list[index]).indexOf('label') >= 0">
-          <a-input v-model="myArray.list[index].label"></a-input>
+    <draggable
+      v-model="myArray"
+      chosen-class="chosen"
+      force-fallback="true"
+      group="people"
+      animation="1000"
+      @start="onStart"
+      @end="onEnd"
+    >
+      <transition-group>
+        <div class="item" v-for="element in myArray" :key="element.id">
+          {{ element.name }}
+        </div>
+      </transition-group>
+    </draggable>
 
-        </a-form-model-item>
-        <!-- <a-form-model-item label="新增" v-if="Object.keys(myArray.list[index].customize).indexOf('create') >= 0">
-          <a-switch checked-children="开" un-checked-children="关" v-model="myArray.list[index].customize.create" default-checked />
-        </a-form-model-item>
-        <a-form-model-item label="修改" v-if="Object.keys(myArray.list[index].customize).indexOf('edit') >= 0">
-          <a-switch checked-children="开" un-checked-children="关" v-model="myArray.list[index].customize.edit" default-checked />
-        </a-form-model-item>
-        <a-form-model-item label="列表" v-if="Object.keys(myArray.list[index].customize).indexOf('table') >= 0">
-          <a-switch checked-children="开" un-checked-children="关" v-model="myArray.list[index].customize.table" default-checked />
-        </a-form-model-item>
-        <a-form-model-item label="详情" v-if="Object.keys(myArray.list[index].customize).indexOf('detail') >= 0">
-          <a-switch checked-children="开" un-checked-children="关" v-model="myArray.list[index].customize.detail" default-checked />
-        </a-form-model-item>
-        <a-form-model-item label="搜索" v-if="Object.keys(myArray.list[index].customize).indexOf('search') >= 0">
-          <a-switch checked-children="开" un-checked-children="关" v-model="myArray.list[index].customize.search" default-checked />
-        </a-form-model-item>
-        <a-form-model-item label="插槽" v-if="Object.keys(myArray.list[index].customize).indexOf('sort') >= 0">
-          <a-switch checked-children="开" un-checked-children="关" v-model="myArray.list[index].customize.sort" default-checked />
-        </a-form-model-item>-->
-        <a-form-model-item label="类型" v-if="Object.keys(myArray.list[index]).indexOf('type') >= 0">
-          <a-select :default-value="myArray.list[index].type">
-            <a-select-option value="input">
-              单行文本
-            </a-select-option>
-            <a-select-option value="date">
-              日期选择器
-            </a-select-option>
-            <a-select-option value="textarea">
-              多行文本
-            </a-select-option>
-            <a-select-option value="select">
-              下拉选择器
-            </a-select-option>
-            <a-select-option value="radio">
-              单选框
-            </a-select-option>
-          </a-select>
-        </a-form-model-item>
-      </a-form-model>
-    </a-card>
-  </draggable>
-  <a-modal v-model="visible" title="解析JSON" @ok="handleOk">
-    <a-textarea v-model="value" placeholder="请输入解析JSON" :auto-size="{ minRows: 15, maxRows: 25 }" />
-  </a-modal>
-</div>
+    <a-modal v-model="visible" title="解析JSON" @ok="handleOk">
+      <a-textarea
+        v-model="value"
+        placeholder="请输入解析JSON"
+        :auto-size="{ minRows: 15, maxRows: 25 }"
+      />
+    </a-modal>
+  </div>
 </template>
 
 <script>
@@ -73,17 +59,33 @@ import draggable from "vuedraggable";
 export default {
   data() {
     return {
+      drag: false,
+
       value: "",
       copyText: "",
       visible: false,
-      myArray: null,
+      myArray: null
     };
+  },
+  computed: {
+    TableList() {
+      return this.myArray.list.filter(element => {
+        console.log(element.customize.table);
+        return element.customize.table;
+      });
+    }
   },
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    draggable,
+    draggable
   },
   methods: {
+    onStart() {
+      this.drag = true;
+    },
+    onEnd() {
+      this.drag = false;
+    },
     copy(val) {
       this.copyText = JSON.stringify(this.myArray);
       var clipboard = new Clipboard(`.${val}`);
@@ -122,14 +124,15 @@ export default {
     datadragEnd() {
       this.value = "";
       console.log(this.myArray);
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style lang="less" scoped>
 .warp {
   display: flex;
+  padding: 10px 15px;
 }
 
 .card {
@@ -140,21 +143,20 @@ export default {
   cursor: move;
 }
 
-.list-complete-enter,
-.list-complete-leave-active {
-  opacity: 0;
-  height: 0px;
-  margin-top: 0px;
-  padding: 0px;
-  border: solid 0px;
+.item {
+  padding: 6px;
+  background-color: #fdfdfd;
+  border: solid 1px #eee;
+  margin-bottom: 10px;
+  cursor: move;
 }
 
-.list-complete-sortable-chosen,
-.list-complete-sortable-ghost {
-  opacity: 0;
-  height: 0px;
-  margin-top: 0px;
-  padding: 0px;
-  border: solid 0px;
+.item:hover {
+  background-color: #f1f1f1;
+  cursor: move;
+}
+
+.chosen {
+  border: solid 2px #3089dc !important;
 }
 </style>

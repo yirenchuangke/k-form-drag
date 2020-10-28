@@ -1,0 +1,339 @@
+{
+  "list": [{
+      "type": "number",
+      "label": "主键ID",
+      "model": "id",
+      "key": "14138",
+      "customize": {
+        "create": false,
+        "edit": false,
+        "table": true,
+        "detail": true,
+        "search": false,
+        "sort": false,
+        "url": "",
+        "tail": "",
+        "value": "",
+        "label": "",
+        "cascade": false,
+        "cascadeModel": "",
+        "cascadeKey": ""
+      },
+      "rules": [{
+        "required": true,
+        "message": "必填项"
+      }],
+      "options": {
+        "placeholder": "主键ID",
+        "defaultValue": "",
+        "width": "100%",
+        "maxLength": 11,
+        "disabled": false,
+        "hidden": false
+      }
+    },
+    {
+      "type": "input",
+      "label": "任务名称",
+      "model": "taskName",
+      "key": "14145",
+      "customize": {
+        "create": true,
+        "edit": true,
+        "table": true,
+        "detail": true,
+        "search": false,
+        "sort": false,
+        "url": "",
+        "tail": "",
+        "value": "",
+        "label": "",
+        "cascade": false,
+        "cascadeModel": "",
+        "cascadeKey": ""
+      },
+      "rules": [],
+      "options": {
+        "placeholder": "任务名称",
+        "defaultValue": "",
+        "width": "100%",
+        "maxLength": 255,
+        "disabled": false,
+        "hidden": false
+      }
+    },
+    {
+      "type": "input",
+      "label": "任务代码",
+      "model": "taskCode",
+      "key": "14146",
+      "customize": {
+        "create": true,
+        "edit": true,
+        "table": true,
+        "detail": true,
+        "search": false,
+        "sort": false,
+        "url": "",
+        "tail": "",
+        "value": "",
+        "label": "",
+        "cascade": false,
+        "cascadeModel": "",
+        "cascadeKey": ""
+      },
+      "rules": [],
+      "options": {
+        "placeholder": "任务代码",
+        "defaultValue": "",
+        "width": "100%",
+        "maxLength": 255,
+        "disabled": false,
+        "hidden": false
+      }
+    },
+    {
+      "type": "input",
+      "label": "注释",
+      "model": "description",
+      "key": "14147",
+      "customize": {
+        "create": true,
+        "edit": true,
+        "table": true,
+        "detail": true,
+        "search": false,
+        "sort": false,
+        "url": "",
+        "tail": "",
+        "value": "",
+        "label": "",
+        "cascade": false,
+        "cascadeModel": "",
+        "cascadeKey": ""
+      },
+      "rules": [],
+      "options": {
+        "placeholder": "注释",
+        "defaultValue": "",
+        "width": "100%",
+        "maxLength": 255,
+        "disabled": false,
+        "hidden": false
+      }
+    },
+    {
+      "type": "input",
+      "label": "是否有效(1:有效,0:无效)",
+      "model": "valid",
+      "key": "14139",
+      "customize": {
+        "create": false,
+        "edit": false,
+        "table": false,
+        "detail": false,
+        "search": false,
+        "sort": false,
+        "url": "",
+        "tail": "",
+        "value": "",
+        "label": "",
+        "cascade": false,
+        "cascadeModel": "",
+        "cascadeKey": ""
+      },
+      "rules": [],
+      "options": {
+        "placeholder": "是否有效(1:有效,0:无效)",
+        "defaultValue": "1",
+        "width": "100%",
+        "maxLength": 1,
+        "disabled": false,
+        "hidden": false
+      }
+    },
+    {
+      "type": "input",
+      "label": "所属站点id",
+      "model": "siteId",
+      "key": "14140",
+      "customize": {
+        "create": false,
+        "edit": false,
+        "table": false,
+        "detail": false,
+        "search": false,
+        "sort": false,
+        "url": "",
+        "tail": "",
+        "value": "",
+        "label": "",
+        "cascade": false,
+        "cascadeModel": "",
+        "cascadeKey": ""
+      },
+      "rules": [{
+        "required": true,
+        "message": "必填项"
+      }],
+      "options": {
+        "placeholder": "所属站点ID",
+        "defaultValue": "",
+        "width": "100%",
+        "maxLength": 32,
+        "disabled": false,
+        "hidden": false
+      }
+    },
+    {
+      "type": "date",
+      "label": "创建时间",
+      "model": "gmtCreate",
+      "key": "14141",
+      "customize": {
+        "create": false,
+        "edit": false,
+        "table": true,
+        "detail": true,
+        "search": false,
+        "sort": false,
+        "url": "",
+        "tail": "",
+        "value": "",
+        "label": "",
+        "cascade": false,
+        "cascadeModel": "",
+        "cascadeKey": ""
+      },
+      "rules": [{
+        "required": true,
+        "message": "必填项"
+      }],
+      "options": {
+        "placeholder": "创建时间",
+        "defaultValue": "",
+        "width": "100%",
+        "showTime": false,
+        "format": "YYYY-MM-DD",
+        "range": false,
+        "disabled": false,
+        "hidden": false
+      }
+    },
+    {
+      "type": "input",
+      "label": "创建用户ID",
+      "model": "createUserId",
+      "key": "14142",
+      "customize": {
+        "create": false,
+        "edit": false,
+        "table": false,
+        "detail": false,
+        "search": false,
+        "sort": false,
+        "url": "",
+        "tail": "",
+        "value": "",
+        "label": "",
+        "cascade": false,
+        "cascadeModel": "",
+        "cascadeKey": ""
+      },
+      "rules": [{
+        "required": true,
+        "message": "必填项"
+      }],
+      "options": {
+        "placeholder": "创建用户ID",
+        "defaultValue": "",
+        "width": "100%",
+        "maxLength": 32,
+        "disabled": false,
+        "hidden": false
+      }
+    },
+    {
+      "type": "date",
+      "label": "修改时间",
+      "model": "gmtModified",
+      "key": "14143",
+      "customize": {
+        "create": false,
+        "edit": false,
+        "table": true,
+        "detail": true,
+        "search": false,
+        "sort": false,
+        "url": "",
+        "tail": "",
+        "value": "",
+        "label": "",
+        "cascade": false,
+        "cascadeModel": "",
+        "cascadeKey": ""
+      },
+      "rules": [{
+        "required": true,
+        "message": "必填项"
+      }],
+      "options": {
+        "placeholder": "修改时间",
+        "defaultValue": "",
+        "width": "100%",
+        "showTime": false,
+        "format": "YYYY-MM-DD",
+        "range": false,
+        "disabled": false,
+        "hidden": false
+      }
+    },
+    {
+      "type": "input",
+      "label": "修改用户ID",
+      "model": "modifiedUserId",
+      "key": "14144",
+      "customize": {
+        "create": false,
+        "edit": false,
+        "table": false,
+        "detail": false,
+        "search": false,
+        "sort": false,
+        "url": "",
+        "tail": "",
+        "value": "",
+        "label": "",
+        "cascade": false,
+        "cascadeModel": "",
+        "cascadeKey": ""
+      },
+      "rules": [{
+        "required": true,
+        "message": "必填项"
+      }],
+      "options": {
+        "placeholder": "修改用户ID",
+        "defaultValue": "",
+        "width": "100%",
+        "maxLength": 32,
+        "disabled": false,
+        "hidden": false
+      }
+    }
+  ],
+  "config": {
+    "layout": "horizontal",
+    "labelCol": {
+      "span": 6
+    },
+    "wrapperCol": {
+      "span": 18
+    },
+    "hideRequiredMark": false,
+    "customStyle": "",
+    "customize": {
+      "batch": false
+    }
+  }
+}
